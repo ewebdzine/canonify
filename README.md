@@ -39,6 +39,38 @@ explicit and routable.
 | Commit | `/canonify:commit` | audit a diff against the rules the canons document |
 | Doctor | `/canonify:doctor` | health check: reference integrity + git-derived staleness |
 
+## How it fits your workflow
+
+![Canonify workflow: plan, build, commit](assets/canonify-workflow.svg)
+
+Canonify rides the natural **plan -> build -> commit** rhythm. The three lifecycle gates run at three moments:
+
+1. **Plan** - `/canonify:plan` - **when you start a new plan.** It loads the project's breadth (the one-line summary of every canon in `CANONIFY.md`) so you design with the whole menu in view: which integrations, services, and UI patterns already exist to reuse, and what is genuinely new. You get a reuse-vs-build triage before any architecture is set.
+
+2. **Build** - `/canonify:build` - **once the plan is set, before Claude writes code.** It takes the concrete task and routes it to the specific canons it implicates, loading them in full. The implementation then follows your established patterns - the right wrapper, the right helper, the documented gotchas - instead of a reinvented version.
+
+3. **Commit** - `/canonify:commit` - **after you have built all the phases.** It audits the diff against the rules those same canons document, before you commit or ship - a last gate that catches "this does not follow our convention" before it lands.
+
+The other three gates support the loop rather than sit in it:
+
+- **`/canonify:kickoff`** - run once per repo to set Canonify up.
+- **`/canonify:create-canon`** - whenever you build something new worth standardizing, capture it as a canon.
+- **`/canonify:doctor`** - periodically (or on a schedule) to flag canons whose code has drifted.
+
+## What you'd use it for
+
+**Lock in a UI element so it is reused, not re-drawn.**
+You build a working chat panel (or data table, or card) in HTML/CSS/JS and get the look and behavior right - a working reference, not necessarily the polished final. Run `/canonify:create-canon` on it and Canonify documents the markup, the classes, the tokens, and a copy-pasteable **mockup recipe**. Now every other screen that needs that element gets the *same* one - and an AI assistant building the next section reproduces it exactly instead of inventing a slightly different variant.
+
+**Standardize how you call a third-party API.**
+Wrap Stripe (or Twilio, UPS, ...) once with your conventions - where the config lives, how errors are handled, retries. Canonify it. The next integration follows the same shape, and `/canonify:build` hands that pattern to whoever - or whatever - adds it.
+
+**Onboard a contributor (human or AI) in one command.**
+`/canonify:plan` gives a breadth tour of what the codebase already has, so new work reuses instead of reinventing; `/canonify:build` routes a specific task to the exact pattern plus gotchas.
+
+**Catch convention violations before they ship.**
+`/canonify:commit` audits a diff against the rules your canons document (for example: "match phone numbers by a normalized key, never string equality") - a guardrail at the last gate before prod.
+
 ## Quickstart
 
 ```sh
@@ -64,9 +96,10 @@ and `/canonify:commit` refreshes the marker when it re-confirms a canon.
 ## Status
 
 Pre-1.0. All six gates are built and project-agnostic. The reference implementation is a large
-production .NET / Composite C1 codebase (~30 canons across platform, integrations, services, and UI).
-Next: prove it on a second stack, then a v1.0 release. See [SPEC.md](SPEC.md) for the feature and
-release checklist, and [CHANGELOG.md](CHANGELOG.md) for history.
+production .NET / Composite C1 codebase (~30 canons across platform, integrations, services, and UI),
+and it is running clean in a second, different .NET project - the genericization holds. Next: a
+non-.NET stack, then a v1.0 release. See [SPEC.md](SPEC.md) for the feature and release checklist,
+and [CHANGELOG.md](CHANGELOG.md) for history.
 
 ## License
 
