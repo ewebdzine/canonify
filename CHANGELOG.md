@@ -5,7 +5,17 @@ Canonify is pre-1.0 and incubating inside the `ceosite` repo (its reference impl
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-06-16
+
 ### Added
+- **Doctor plugin-freshness check** - `/canonify:doctor` gains an optional, best-effort Check 3:
+  compare the *installed* Canonify plugin's effective version (from `~/.claude/plugins/installed_plugins.json`)
+  against the source's effective version (the `version` in `.claude-plugin/plugin.json` on the
+  default branch, falling back to the commit SHA for a SHA-tracked plugin) and flag when the project
+  is behind, with the `/plugin update ... + /reload-plugins` remedy. Compares versions, not raw
+  commits, so an unreleased commit does not false-flag. Skips cleanly for a local/dev checkout (no
+  install record) or when offline; report-only, never self-updates. Lets a scheduled sweep also
+  catch an out-of-date toolchain, not just canon drift.
 - **Self-identifying Doctor sweeps** - `/canonify:doctor` now opens its report with a
   `CANONIFY DOCTOR - found N items to review` (or `- clean`) banner, and any follow-up task it spins
   off is prefixed `Canonify:` and opens with `CANONIFY DOCTOR flagged this:`. A scheduled sweep lands
