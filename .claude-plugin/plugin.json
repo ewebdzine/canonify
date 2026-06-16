@@ -7,5 +7,7 @@
     "email": "brent@ewebdzine.com"
   },
   "license": "MIT",
+  "homepage": "https://github.com/ewebdzine/canonify",
+  "repository": "https://github.com/ewebdzine/canonify",
   "keywords": ["documentation", "patterns", "canon", "governance", "skills", "agent"]
 }

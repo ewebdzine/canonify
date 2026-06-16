@@ -9,7 +9,8 @@
     {
       "name": "canonify",
       "source": ".",
-      "description": "Canonical-pattern docs your AI assistant routes to at every lifecycle gate (plan / build / commit), plus create-canon to author canons and kickoff to onboard a repo."
+      "description": "Canonical-pattern docs your AI assistant routes to at every lifecycle gate (plan / build / commit), plus create-canon to author canons and kickoff to onboard a repo.",
+      "homepage": "https://github.com/ewebdzine/canonify"
     }
   ]
 }

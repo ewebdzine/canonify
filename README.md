@@ -42,8 +42,8 @@ explicit and routable.
 ## Quickstart
 
 ```sh
-# add this repo as a plugin marketplace (a Git URL, or a local path)
-/plugin marketplace add <repo-url>
+# add this repo as a plugin marketplace
+/plugin marketplace add ewebdzine/canonify
 /plugin install canonify@canonify
 
 # stand Canonify up in your project
