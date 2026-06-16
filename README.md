@@ -28,6 +28,19 @@ explicit and routable.
   route through.
 - **The gates** - six skills that read or maintain the canon at each point in the lifecycle.
 
+## Why not just put it all in `CLAUDE.md`?
+
+`CLAUDE.md` is loaded into context **every session, in full** - ideal for a short list of always-true project rules. But the moment you try to capture *every* pattern there - how you call each vendor, how you build each UI element, the gotchas in each subsystem - it balloons, and you pay that token cost on every turn whether the task touches those patterns or not. Worse, the guidance that *is* relevant gets buried in everything that isn't.
+
+Canonify is **lazy by design:**
+
+- The manifest (`CANONIFY.md`) holds only a **one-line summary per canon** - a cheap breadth map that stays small even at 100+ patterns, and it is read only when you run a gate, not on every message.
+- The **full canon** loads only when a task or diff actually implicates it. You pay for a pattern's detail exactly when you are working on it - not before.
+
+So your per-task context stays roughly constant as the codebase grows, and the model's attention lands on the few patterns that matter instead of wading through all of them.
+
+Keep `CLAUDE.md` for the handful of always-on rules; let Canonify carry the large, growing body of situational patterns.
+
 ## The gates
 
 | Gate | Command | What it does |
