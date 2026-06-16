@@ -8,7 +8,7 @@
   "plugins": [
     {
       "name": "canonify",
-      "source": { "source": "github", "repo": "ewebdzine/canonify" },
+      "source": { "source": "url", "url": "https://github.com/ewebdzine/canonify.git" },
       "description": "Canonical-pattern docs your AI assistant routes to at every lifecycle gate (plan / build / commit), plus create-canon to author canons and kickoff to onboard a repo.",
       "homepage": "https://github.com/ewebdzine/canonify"
     }
