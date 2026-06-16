@@ -1,0 +1,45 @@
+# CANONIFY - canonical pattern manifest
+
+> Copy this to `CANONIFY.md` at your repo root and fill in the doc summaries. This file is the
+> routing manifest for Canonify: the three gates (`/canonify-plan`, `/canonify-build`,
+> `/canonify-commit`) read the one-line summaries below to find the right reference doc.
+
+The routing manifest for **Canonify**. Its three gates read this file: **Plan** (`/canonify-plan`
+- orient on the whole landscape), **Build** (`/canonify-build` - route a task to the docs it
+implicates and load them), and **Commit** (`/canonify-commit` - audit a diff against those same
+docs). Scan each one-line summary below against the task (or diff); for every match, load the
+matching doc and read it before writing or shipping code.
+
+---
+
+## <Category A, e.g. "Platform" / "Framework">
+
+### `docs/<area>/INDEX.md`
+The master index for this category - a lookup table; load this when the task does not obviously
+match a single file below.
+
+## `docs/<area>/<topic>.md`
+<One paragraph: the APIs, patterns, and the non-obvious rules this doc covers. Name the key
+types/functions and the canonical pattern, so a task or diff that touches this area matches here.>
+
+## `docs/<area>/<topic-2>.md`
+<...>
+
+---
+
+## <Category B, e.g. "Service integrations">
+
+### `docs/services/<vendor>.md`
+<One paragraph per integration: the wrapper class, config keys, the canonical call pattern, gotchas.>
+
+---
+
+## How to use
+
+1. Read this whole file (keep it short on purpose).
+2. For each line whose keywords match the task/diff, open that doc and read it.
+3. Docs cross-link each other when topics overlap - follow those links.
+4. Only after reading the matched docs, write the plan / code, or run the commit audit.
+
+If nothing matches, proceed normally - not every change touches a documented pattern. If a match
+feels weak, open it anyway: skim cost is low; rebuilding a pattern wrong is expensive.

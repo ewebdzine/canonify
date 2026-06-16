@@ -1,0 +1,15 @@
+{
+  "name": "canonify",
+  "owner": {
+    "name": "ewebdzine",
+    "email": "brent@ewebdzine.com"
+  },
+  "description": "The Canonify plugin marketplace.",
+  "plugins": [
+    {
+      "name": "canonify",
+      "source": ".",
+      "description": "Canonical-pattern docs your AI assistant routes to at every lifecycle gate (plan / build / commit), plus create-canon to author canons and kickoff to onboard a repo."
+    }
+  ]
+}
