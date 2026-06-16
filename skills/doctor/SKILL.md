@@ -33,9 +33,19 @@ version of the staleness check also runs inside `/canonify:commit` on the diff.
    - Use **git, never file mtime** (checkout resets mtime). Use the platform git the repo requires
      (read-only `git log`); on a Windows working tree, the Windows git, not a WSL git.
 
-4. **Report a worklist.** Group by canon. For each finding: the canon, the issue (broken ref /
-   unregistered / orphan / dangling / stale ref), the `file:line` or commit evidence, and a one-line
-   suggested action. End with a summary line: N canons checked, B reference issues, S staleness flags.
+4. **Open with a self-identifying banner, then report the worklist.** A scheduled sweep arrives as a
+   standalone message with no surrounding context, so the FIRST line must name Canonify and say
+   whether anything was found - e.g. `CANONIFY DOCTOR - found 2 items to review` (or, when clean,
+   `CANONIFY DOCTOR - clean, nothing to review`). Then group findings by canon: the canon, the issue
+   (broken ref / unregistered / orphan / dangling / stale ref), the `file:line` or commit evidence,
+   and a one-line suggested action. End with a summary line: N canons checked, B reference issues,
+   S staleness flags.
+
+5. **Self-identify any follow-up task too.** If a finding warrants its own working session (a real
+   fix, not just a "go look"), and you spin it off as a task, prefix the task title with `Canonify:`
+   and open the task prompt with the same `CANONIFY DOCTOR flagged this:` line - so a task that lands
+   out of context (e.g. the Facebook tokens-in-logs case) is recognizable at a glance as a Canonify
+   finding, exactly like the sweep message itself.
 
 ## Don't do
 
@@ -49,9 +59,9 @@ version of the staleness check also runs inside `/canonify:commit` on the diff.
 ## Output template
 
 ```
-## /canonify:doctor - <repo>
+CANONIFY DOCTOR - <found <N> item(s) to review | clean, nothing to review>
 
-Canons checked: <N>
+/canonify:doctor - <repo>, <N> canons checked
 
 ### Reference integrity
 - [OK] all <N> canons registered and cited paths exist

@@ -6,6 +6,19 @@ Canonify is pre-1.0 and incubating inside the `ceosite` repo (its reference impl
 ## [Unreleased]
 
 ### Added
+- **Self-identifying Doctor sweeps** - `/canonify:doctor` now opens its report with a
+  `CANONIFY DOCTOR - found N items to review` (or `- clean`) banner, and any follow-up task it spins
+  off is prefixed `Canonify:` and opens with `CANONIFY DOCTOR flagged this:`. A scheduled sweep lands
+  as a standalone message/task, so the first line names Canonify and the outcome at a glance.
+- **`/canonify:update-canon` gate** - the maintenance gate: capture a mid-coding discovery into an
+  *existing* canon. Routes off `CANONIFY.md` (same selector as build/commit), dedup-checks the update
+  against the canon (already covered -> say where + offer a sharpen; partial/stale -> revise;
+  uncovered -> add in house-style, cited `file:line`), and keeps `verified` honest via the
+  harden-vs-correct fork (append knowledge -> don't bump; re-sync against code -> bump to HEAD).
+  Hands off to `/canonify:create-canon` when no canon owns the area. Brings the gate count to seven.
+- **Commit-gate feedback edge** - `/canonify:commit` now closes with an offer to capture canon drift
+  via `/canonify:update-canon` when a diff looks to have outrun a canon (intentional divergence or a
+  surfaced footgun), rather than filing it as a violation. An offer, never an auto-edit.
 - `/canonify` incubator folder: `SPEC.md` (feature + release rubric), `README.md`, this changelog,
   and `templates/` (`CANONIFY.md.template`, `doc-style.md`).
 - `/create-canon` gate (in ceosite): author a new **canon** (one canonical-pattern `.md`) from a

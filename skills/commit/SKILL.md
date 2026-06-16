@@ -64,9 +64,16 @@ This skill does **pattern adherence** only. It does NOT check scope creep, inten
 
    End with a one-line summary: how many docs were checked, how many rules, how many findings.
 
+7. **Offer to capture canon drift (the loop's feedback edge).** Sometimes the diff doesn't violate
+   the canon - it reveals the *canon* is behind: the change intentionally and consistently diverges
+   from a documented rule (the pattern moved on), or it surfaced a real footgun the canon never
+   mentions. When you see that, don't file it as a violation - note it and offer one line:
+   "`<canon>` looks behind the code here (<what>). Capture it with `/canonify:update-canon`?" An
+   offer, never an auto-edit - the user decides whether the canon or the diff is the source of truth.
+
 ## Don't do
 
-- **Don't auto-fix.** Report only.
+- **Don't auto-fix.** Report only - including the canon-drift offer (step 7): suggest, never edit the canon here.
 - **Don't run the full test suite or build.** Pattern audit only.
 - **Don't check scope creep** ("did we add features beyond what was asked"). That's a separate concern not in v1.
 - **Don't recommend refactors.** If the diff complies with the docs, it passes - even if you'd structure it differently.
@@ -106,4 +113,7 @@ Skipped:
 ### Summary
 
 <N> docs swept, <M> implicated. <K> rules checked. <V> violations, <U> uncertain. <Free to commit | Address findings above before committing>.
+
+<optional, only if a canon looks behind the code:>
+Canon drift: <canon>.md may be behind the diff (<what changed>). Capture with /canonify:update-canon?
 ```

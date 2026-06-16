@@ -6,7 +6,7 @@
 
 **Canonify** gives an AI coding assistant the one thing it lacks in a real codebase: a memory of how
 *this* project already does things. You capture each pattern as a **canon** - a short markdown doc
-with `file:line` references - a `CANONIFY.md` manifest indexes them, and six skills route to the
+with `file:line` references - a `CANONIFY.md` manifest indexes them, and seven skills route to the
 right canon at the right moment. The assistant follows your conventions instead of reinventing them.
 
 It is a [Claude Code](https://docs.claude.com/en/docs/claude-code/overview) plugin. **Language-agnostic:**
@@ -26,7 +26,7 @@ explicit and routable.
   how you build a data table, how a particular feature works).
 - **`CANONIFY.md`** - the manifest: a one-line summary of every canon. The breadth map the gates
   route through.
-- **The gates** - six skills that read or maintain the canon at each point in the lifecycle.
+- **The gates** - seven skills that read or maintain the canon at each point in the lifecycle.
 
 ## Why not just put it all in `CLAUDE.md`?
 
@@ -47,6 +47,7 @@ Keep `CLAUDE.md` for the handful of always-on rules; let Canonify carry the larg
 |---|---|---|
 | Kickoff | `/canonify:kickoff` | onboard a fresh repo: survey -> write `CANONIFY.md` + a `docs/` skeleton -> optionally scan-and-seed canons |
 | Create-canon | `/canonify:create-canon` | author a new canon from a file / service / element and register it |
+| Update-canon | `/canonify:update-canon` | capture a mid-coding discovery into an existing canon: dedup-check, then add or revise |
 | Plan | `/canonify:plan` | breadth orientation before planning (reuse-vs-build triage) |
 | Build | `/canonify:build` | route a task to the canons it implicates, load them, follow the pattern |
 | Commit | `/canonify:commit` | audit a diff against the rules the canons document |
@@ -54,7 +55,7 @@ Keep `CLAUDE.md` for the handful of always-on rules; let Canonify carry the larg
 
 ## How it fits your workflow
 
-![Canonify workflow: plan, build, commit](assets/canonify-workflow.svg)
+![Canonify workflow: the Plan gate, then Claude drafts the plan, the Build gate, then Claude writes the code, the Commit gate](assets/canonify-workflow.svg)
 
 Canonify rides the natural **plan -> build -> commit** rhythm. The three lifecycle gates run at three moments:
 
@@ -68,6 +69,7 @@ The other three gates support the loop rather than sit in it:
 
 - **`/canonify:kickoff`** - run once per repo to set Canonify up.
 - **`/canonify:create-canon`** - whenever you build something new worth standardizing, capture it as a canon.
+- **`/canonify:update-canon`** - whenever you discover something mid-task that an existing canon should know - it dedup-checks, then adds or revises. `/canonify:commit` also offers it when a diff looks to have outrun a canon.
 - **`/canonify:doctor`** - periodically (or on a schedule) to flag canons whose code has drifted.
 
 ## What you'd use it for
@@ -108,7 +110,7 @@ and `/canonify:commit` refreshes the marker when it re-confirms a canon.
 
 ## Status
 
-Pre-1.0. All six gates are built and project-agnostic. The reference implementation is a large
+Pre-1.0. All seven gates are built and project-agnostic. The reference implementation is a large
 production .NET / Composite C1 codebase (~30 canons across platform, integrations, services, and UI),
 and it is running clean in a second, different .NET project - the genericization holds. Next: a
 non-.NET stack, then a v1.0 release. See [SPEC.md](SPEC.md) for the feature and release checklist,
