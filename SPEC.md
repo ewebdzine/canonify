@@ -17,13 +17,14 @@ Update status as pieces land. Status legend: **Done** / **Partial** / **Planned*
 | **Commit gate** | `/canonify-commit` - audit diff against the same canons; offer `/canonify:update-canon` when a diff looks to have outrun a canon (the feedback edge); also (planned, with Doctor) refresh `verified` SHAs and flag canons whose referenced files the diff touched (incremental staleness) | Audit Done (ceosite); drift-offer Done; staleness duty Planned |
 | **Create-canon gate** | `/create-canon` - author a new canon (one pattern doc) from a file/service/element: index the code, ask only the gaps, write house-style, register in `CANONIFY.md` + the category `INDEX`. The command name teaches the "canon" vocabulary | Done (ceosite) |
 | **Update-canon gate** | `/canonify:update-canon` - capture a mid-coding discovery into an *existing* canon: route to it, dedup-check (already covered -> say where; partial/stale -> revise; uncovered -> add), then keep registration + the `verified` SHA honest (harden = don't bump; correct/re-sync = bump). Complements create-canon (new canon) and is offered by the commit gate when a diff looks to have outrun a canon | Done (generic in `canonify/skills/update-canon`) |
+| **Import-canon gate** | `/canonify:import-canon` - bulk-seed THIS repo's canons from another project's list: use each source canon as a skeleton, re-prove every claim against this repo's code (flag divergence where it has no equivalent), dedup against existing canons, register, and stamp `verified` to this repo's HEAD. It is create-canon over a list, not a copy - for sharing platform canons (e.g. Composite) across several repos | Done (generic in `canonify/skills/import-canon`) |
 | **Kickoff gate** | `/kickoff` - one-time onboarding wizard for a fresh repo: a short survey (scan-and-seed? scheduled Doctor?), then write `CANONIFY.md` + the `docs/` skeleton and optionally bulk-seed canons by scanning. Design in section 3b | Done (generic in `canonify/skills/kickoff`) |
 | **Doctor / Lint gate** | `/canonify-doctor` - two checks per canon: **reference integrity** (every cited path exists, every canon registered in `CANONIFY.md` + `INDEX`) and **staleness** (git-derived: flag any referenced file changed since the canon's `verified` SHA). Design + triggers in section 3a | Done (generic in `canonify/skills/doctor`) |
 | **Manifest convention** | `CANONIFY.md` at root + per-domain `INDEX.md` | Done (ceosite) |
 | **Doc house-style** | the section skeleton + rules (cite file:line, ASCII, terse, no theory padding) | Done (exemplars: `docs/services/activecampaign.md`, `docs/design/charts.md`); captured in `templates/doc-style.md` |
 | **Routing logic** | semantic summary matching + Implicated/Skipped table (not hardcoded conditionals) | Done (ceosite) |
 | **Mockup-recipe convention** | design docs carry a token-accurate static snippet so mockups match production | Done (ceosite `docs/design/`) |
-| **Framework <-> content split** | portable skills vs per-repo `CANONIFY.md` + docs | Done - all 7 gates generic + namespaced in `canonify/skills/`; content (`CANONIFY.md` + docs) stays per-repo |
+| **Framework <-> content split** | portable skills vs per-repo `CANONIFY.md` + docs | Done - all 8 gates generic + namespaced in `canonify/skills/`; content (`CANONIFY.md` + docs) stays per-repo |
 | **Back-compat aliases** | BYP / BYB / BYC still trigger the gates | Done |
 | **Language-agnostic** | proven on more than one language/stack | Partial - .NET / Composite C1 only so far |
 
@@ -35,7 +36,7 @@ Update status as pieces land. Status legend: **Done** / **Partial** / **Planned*
 | `LICENSE` | Done (MIT) |
 | `CONTRIBUTING.md` | Planned |
 | `CHANGELOG.md` + semver | Started |
-| Generic skills lifted into `canonify/skills/` (no project specifics) | Done - all 7 gates (plan/build/commit/create-canon/update-canon/kickoff/doctor) generic + namespaced |
+| Generic skills lifted into `canonify/skills/` (no project specifics) | Done - all 8 gates (plan/build/commit/create-canon/update-canon/import-canon/kickoff/doctor) generic + namespaced |
 | `templates/` (manifest + doc-style) usable to seed a new repo | Done (initial) |
 | **>= 2 example repos** - one .NET (ceosite-derived), one Python | Planned (1 of 2: ceosite) |
 | Plugin packaging: `plugin.json` + marketplace metadata | Partial - `.claude-plugin/{plugin,marketplace}.json` done; gates namespaced `canonify:plan/build/commit/create-canon`; needs extraction to own repo + GitHub URL |
@@ -153,7 +154,7 @@ skills. Capture those learnings here before extraction.
 
 ## 5. v1.0 definition-of-done
 
-Canonify ships v1.0 when: all gates exist (plan/build/commit, create-canon, update-canon, kickoff, doctor); the OSS
+Canonify ships v1.0 when: all gates exist (plan/build/commit, create-canon, update-canon, import-canon, kickoff, doctor); the OSS
 checklist is complete; it is proven on two stacks; the eval set is green; and a new repo can go
 from zero to a working canon via `/kickoff` + the templates.
 

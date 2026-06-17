@@ -10,7 +10,7 @@
   <text x="40" y="58" font-size="34" font-weight="700" fill="#0f172a">Canonify</text>
   <text x="42" y="88" font-size="15" fill="#475569">Canonical-pattern docs your AI assistant routes to at every lifecycle gate.</text>
 
-  <text x="140" y="150" font-size="12" font-weight="700" fill="#6366f1" text-anchor="middle" letter-spacing="1">CREATE / REGISTER</text>
+  <text x="140" y="144" font-size="12" font-weight="700" fill="#6366f1" text-anchor="middle" letter-spacing="1">CREATE / REGISTER</text>
   <text x="760" y="125" font-size="12" font-weight="700" fill="#6366f1" text-anchor="middle" letter-spacing="1">READ / ROUTE</text>
 
   <rect x="360" y="232" width="180" height="96" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2.5"/>
@@ -18,17 +18,21 @@
   <text x="450" y="290" text-anchor="middle" font-size="12" fill="#6366f1">the manifest</text>
   <text x="450" y="312" text-anchor="middle" font-size="11" fill="#64748b">indexes your docs/*.md canons</text>
 
-  <rect x="40" y="168" width="200" height="48" rx="10" fill="#eef2ff" stroke="#c7d2fe" stroke-width="1.5"/>
-  <text x="54" y="192" font-size="13" font-weight="700" fill="#4338ca" font-family="ui-monospace, Menlo, monospace">/canonify:kickoff</text>
-  <text x="54" y="208" font-size="11" fill="#6b7280">onboard a fresh repo</text>
+  <rect x="40" y="156" width="200" height="44" rx="10" fill="#eef2ff" stroke="#c7d2fe" stroke-width="1.5"/>
+  <text x="54" y="180" font-size="13" font-weight="700" fill="#4338ca" font-family="ui-monospace, Menlo, monospace">/canonify:kickoff</text>
+  <text x="54" y="194" font-size="11" fill="#6b7280">onboard a fresh repo</text>
 
-  <rect x="40" y="258" width="200" height="48" rx="10" fill="#eef2ff" stroke="#c7d2fe" stroke-width="1.5"/>
-  <text x="54" y="282" font-size="13" font-weight="700" fill="#4338ca" font-family="ui-monospace, Menlo, monospace">/canonify:create-canon</text>
-  <text x="54" y="298" font-size="11" fill="#6b7280">author a canon</text>
+  <rect x="40" y="220" width="200" height="44" rx="10" fill="#eef2ff" stroke="#c7d2fe" stroke-width="1.5"/>
+  <text x="54" y="244" font-size="13" font-weight="700" fill="#4338ca" font-family="ui-monospace, Menlo, monospace">/canonify:create-canon</text>
+  <text x="54" y="258" font-size="11" fill="#6b7280">author a canon</text>
 
-  <rect x="40" y="348" width="200" height="48" rx="10" fill="#eef2ff" stroke="#c7d2fe" stroke-width="1.5"/>
-  <text x="54" y="372" font-size="13" font-weight="700" fill="#4338ca" font-family="ui-monospace, Menlo, monospace">/canonify:update-canon</text>
-  <text x="54" y="388" font-size="11" fill="#6b7280">revise an existing canon</text>
+  <rect x="40" y="284" width="200" height="44" rx="10" fill="#eef2ff" stroke="#c7d2fe" stroke-width="1.5"/>
+  <text x="54" y="308" font-size="13" font-weight="700" fill="#4338ca" font-family="ui-monospace, Menlo, monospace">/canonify:update-canon</text>
+  <text x="54" y="322" font-size="11" fill="#6b7280">revise an existing canon</text>
+
+  <rect x="40" y="348" width="200" height="44" rx="10" fill="#eef2ff" stroke="#c7d2fe" stroke-width="1.5"/>
+  <text x="54" y="372" font-size="13" font-weight="700" fill="#4338ca" font-family="ui-monospace, Menlo, monospace">/canonify:import-canon</text>
+  <text x="54" y="386" font-size="11" fill="#6b7280">import from another repo</text>
 
   <rect x="660" y="150" width="200" height="46" rx="10" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5"/>
   <text x="674" y="173" font-size="13" font-weight="700" fill="#334155" font-family="ui-monospace, Menlo, monospace">/canonify:plan</text>
@@ -46,9 +50,10 @@
   <text x="364" y="432" font-size="13" font-weight="700" fill="#0f766e" font-family="ui-monospace, Menlo, monospace">/canonify:doctor</text>
   <text x="364" y="448" font-size="11" fill="#0d9488">refs + staleness check</text>
 
-  <path d="M240,192 C300,192 312,246 356,252" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar)"/>
-  <path d="M240,282 C300,282 312,280 356,280" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar)"/>
-  <path d="M240,372 C300,372 312,312 356,308" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M240,178 C300,178 318,248 356,250" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M240,242 C300,242 322,270 356,272" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M240,306 C300,306 322,294 356,294" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M240,370 C300,370 318,318 356,316" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar)"/>
 
   <path d="M540,254 C590,238 604,180 656,173" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar)"/>
   <path d="M540,276 C592,276 604,238 656,237" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar)"/>

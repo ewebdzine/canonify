@@ -5,6 +5,16 @@ Canonify is pre-1.0 and incubating inside the `ceosite` repo (its reference impl
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-06-16
+
+### Added
+- **`/canonify:import-canon` gate** - bulk-seed this repo's canons from another project's list (a
+  folder or specific canons). Uses each source canon as a skeleton, then re-proves every claim
+  against THIS repo's code, re-cites `file:line`, flags where the projects diverge (no fabrication),
+  dedups against existing canons, registers in `CANONIFY.md` + the category `INDEX`, and stamps
+  `verified` to this repo's HEAD. It is create-canon driven by a source list, not a copy - built for
+  sharing platform canons (e.g. Composite C1) across several repos. Brings the gate count to eight.
+
 ## [0.2.0] - 2026-06-16
 
 ### Added
