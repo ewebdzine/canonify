@@ -90,6 +90,11 @@ Wrap Stripe (or Twilio, UPS, ...) once with your conventions - where the config 
 **Catch convention violations before they ship.**
 `/canonify:commit` audits a diff against the rules your canons document (for example: "match phone numbers by a normalized key, never string equality") - a guardrail at the last gate before prod.
 
+**Turn every bug into a guardrail.**
+You hit an error, start a session with `/canonify:debug`, and paste the stack trace (or a screenshot). Canonify loads the manifest and routes the error to the canon for that area - so Claude debugs with your documented patterns and known gotchas already in context instead of grepping the project cold. Once it is fixed, `/canonify:debug` points you at `/canonify:update-canon` to capture the footgun as a gotcha (or `/canonify:create-canon` if that area was not documented yet). The payoff compounds: the next time `/canonify:build` writes a feature in that area - or `/canonify:debug` lands there again - that gotcha loads first, so the same bug cannot recur and new code avoids it by default.
+
+![The /canonify:debug loop: route an error to its canon, fix it, capture the footgun as a gotcha, and have future build and debug load it so the bug cannot recur](assets/canonify-debug-loop.svg)
+
 ## Quickstart
 
 ```sh

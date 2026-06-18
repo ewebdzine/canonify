@@ -1,0 +1,73 @@
+<svg viewBox="0 0 1280 660" xmlns="http://www.w3.org/2000/svg" role="img" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <title>The /canonify:debug loop: route an error to its canon, fix it, capture the footgun, and prevent it next time</title>
+  <desc>An error is routed by /canonify:debug to the canon for its area; Claude fixes it with that context; /canonify:update-canon captures the footgun into the canon; future /canonify:build and /canonify:debug load that gotcha first, so the bug cannot recur and new features avoid it.</desc>
+  <defs>
+    <marker id="aw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1278" height="658" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+
+  <text x="40" y="50" font-size="26" font-weight="700" fill="#0f172a">The /canonify:debug loop</text>
+  <text x="42" y="78" font-size="14.5" fill="#475569">Fix the bug once - the canon learns it, so it can't recur and new features avoid it.</text>
+
+  <!-- pass row: error -> debug -> fix -> capture -->
+  <rect x="40" y="108" width="268" height="120" rx="12" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="58" y="146" font-size="19" font-weight="700" fill="#b91c1c">A bug surfaces</text>
+  <text x="58" y="178" font-size="13.5" fill="#7f1d1d">You start a session and paste</text>
+  <text x="58" y="197" font-size="13.5" fill="#7f1d1d">the error, a log, or a</text>
+  <text x="58" y="216" font-size="13.5" fill="#7f1d1d">screenshot.</text>
+
+  <rect x="350" y="108" width="268" height="120" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="368" y="146" font-size="15" font-weight="700" fill="#334155" font-family="ui-monospace, Menlo, monospace">/canonify:debug</text>
+  <text x="368" y="176" font-size="13.5" fill="#475569">Loads the index and routes</text>
+  <text x="368" y="195" font-size="13.5" fill="#475569">the error to the canon for</text>
+  <text x="368" y="214" font-size="13.5" fill="#475569">that area - gotchas and all.</text>
+
+  <rect x="660" y="108" width="268" height="120" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="678" y="146" font-size="19" font-weight="700" fill="#0f172a">Claude fixes it</text>
+  <text x="678" y="178" font-size="13.5" fill="#475569">Debugging with that canon</text>
+  <text x="678" y="197" font-size="13.5" fill="#475569">in context, not grepping</text>
+  <text x="678" y="216" font-size="13.5" fill="#475569">the project cold.</text>
+
+  <rect x="970" y="108" width="268" height="120" rx="12" fill="#eef2ff" stroke="#c7d2fe" stroke-width="1.5"/>
+  <text x="988" y="146" font-size="14.5" font-weight="700" fill="#4338ca" font-family="ui-monospace, Menlo, monospace">/canonify:update-canon</text>
+  <text x="988" y="176" font-size="13.5" fill="#475569">Captures the footgun as a</text>
+  <text x="988" y="195" font-size="13.5" fill="#475569">gotcha (or /create-canon if</text>
+  <text x="988" y="214" font-size="13.5" fill="#475569">the area was undocumented).</text>
+
+  <path d="M310,168 L348,168" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#aw)"/>
+  <path d="M620,168 L658,168" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#aw)"/>
+  <path d="M930,168 L968,168" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#aw)"/>
+
+  <!-- capture writes into the canon -->
+  <path d="M1104,230 C1104,285 1000,300 956,322" fill="none" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#aw)"/>
+  <text x="1000" y="276" font-size="12.5" fill="#6366f1">writes the gotcha</text>
+
+  <rect x="240" y="328" width="800" height="84" rx="12" fill="#eef2ff" stroke="#6366f1" stroke-width="2.5"/>
+  <text x="640" y="364" text-anchor="middle" font-size="22" font-weight="700" fill="#3730a3" font-family="ui-monospace, Menlo, monospace">CANONIFY.md</text>
+  <text x="640" y="390" text-anchor="middle" font-size="14" fill="#6366f1">the canon for that area - now carrying the new gotcha</text>
+
+  <!-- canon feeds future gates -->
+  <path d="M520,414 C470,440 415,452 400,470" fill="none" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#aw)"/>
+  <path d="M760,414 C810,440 865,452 880,470" fill="none" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#aw)"/>
+  <text x="640" y="446" text-anchor="middle" font-size="12.5" fill="#6366f1">loaded first by every future</text>
+
+  <rect x="180" y="472" width="440" height="120" rx="12" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+  <text x="200" y="508" font-size="15" font-weight="700" fill="#15803d" font-family="ui-monospace, Menlo, monospace">future /canonify:build</text>
+  <text x="200" y="538" font-size="13.5" fill="#166534">Writes the next feature in this area</text>
+  <text x="200" y="557" font-size="13.5" fill="#166534">with the gotcha already loaded - so</text>
+  <text x="200" y="576" font-size="13.5" fill="#166534">new code avoids the bug by default.</text>
+
+  <rect x="660" y="472" width="440" height="120" rx="12" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+  <text x="680" y="508" font-size="15" font-weight="700" fill="#15803d" font-family="ui-monospace, Menlo, monospace">future /canonify:debug</text>
+  <text x="680" y="538" font-size="13.5" fill="#166534">Hits this area again and loads the</text>
+  <text x="680" y="557" font-size="13.5" fill="#166534">same gotcha first - so the same bug</text>
+  <text x="680" y="576" font-size="13.5" fill="#166534">can't come back.</text>
+
+  <!-- the loop closes -->
+  <path d="M180,545 C58,525 34,360 56,232" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#aw)"/>
+
+  <text x="640" y="632" text-anchor="middle" font-size="13.5" fill="#475569">The loop: every bug fixed this way makes future debugging and new features in that area more reliable.</text>
+</svg>
