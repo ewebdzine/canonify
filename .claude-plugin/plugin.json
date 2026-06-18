@@ -1,7 +1,7 @@
 {
   "name": "canonify",
-  "version": "0.3.0",
-  "description": "Canonical-pattern docs your AI assistant routes to at every lifecycle gate. Plan / Build / Commit read a CANONIFY.md manifest of per-pattern 'canons'; create-canon authors them, update-canon revises them, import-canon ports them from another project, kickoff onboards a repo, doctor keeps them honest.",
+  "version": "0.4.0",
+  "description": "Canonical-pattern docs your AI assistant routes to at every lifecycle gate. Plan / Build / Commit read a CANONIFY.md manifest of per-pattern 'canons'; create-canon authors them, update-canon revises them, import-canon ports them from another project, debug routes an error to the right canon and feeds the fix back, kickoff onboards a repo, doctor keeps them honest.",
   "author": {
     "name": "ewebdzine",
     "email": "brent@ewebdzine.com"

@@ -5,6 +5,19 @@ Canonify is pre-1.0 and incubating inside the `ceosite` repo (its reference impl
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-06-17
+
+### Added
+- **`/canonify:debug` gate** - the reactive debugging gate (twin of `/canonify:build`). Start a
+  session with `/canonify:debug`, then paste / screenshot / reference the error: it loads
+  `CANONIFY.md` and routes the error (its stack-trace files, symbols, and exception type - a precise
+  routing signal) to the canon for that area, loading it and its Gotchas so Claude debugs with
+  context instead of grepping cold. It does not debug itself. After the fix it judges whether there's
+  a durable footgun and points you at `/canonify:update-canon` (add the gotcha) or
+  `/canonify:create-canon` (undocumented area) - or, if the canon already warned about it, flags that
+  the doc needs sharpening or was never loaded at build time. Thin by design: all capture logic stays
+  in update / create-canon. Brings the gate count to nine.
+
 ## [0.3.0] - 2026-06-16
 
 ### Added
